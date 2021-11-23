@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project basedir="." name="fprg-practica3-2021" default="fprg-practica3-2021-Entrega">
+<property environment="env"/>
+<property name="debuglevel" value="source,lines,vars"/>
+<property name="target" value="11"/>
+<property name="source" value="11"/>
+<!--<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+-->
+<path id="JUnit 5.libraryclasspath">
+    <pathelement location=".lib/junit-platform-console-standalone-1.8.1.jar"/>
+</path>
+<path id="fprg-practica3-2021.classpath">
+	<pathelement location="bin"/>
+	<path refid="JUnit 5.libraryclasspath"/>
+	<pathelement location=".lib/ecj-4.20.jar"/>
+</path>
+<path id="fprg-practica3-2021_aux.classpath">
+	<pathelement location=".lib/setting.jar"/>
+</path>
+<target name="init">
+	<delete includeemptydirs="true">
+	    <fileset dir="bin" defaultexcludes="false"/>
+	</delete>
+	<mkdir dir="bin"/>
+	<copy includeemptydirs="false" todir="bin">
+		<fileset dir="src">
+        	<exclude name="**/*.java"/>
+        </fileset>
+    </copy>
+</target>
+<target depends="init" name="build-project">
+    <javac debug="true" debuglevel="${debuglevel}" nowarn="true" srcdir="src" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+        <src path="src"/>
+        <classpath refid="fprg-practica3-2021.classpath"/>
+        <compilerarg compiler="org.eclipse.jdt.core.JDTCompilerAdapter" line="-warn:+boxing"/>
+    	<compilerarg value="-Xlint:unchecked"/>
+    </javac>
+</target>	
+<target depends="build-project" name="fprg-practica3-2021-Entrega">
+    <java classname="Practica3Entrega" fork="yes">
+        <arg line=""/>
+    	<classpath refid="fprg-practica3-2021_aux.classpath"/>
+        <classpath refid="fprg-practica3-2021.classpath"/>
+    </java>
+</target>
+</project>
