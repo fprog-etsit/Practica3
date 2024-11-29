@@ -67,6 +67,9 @@ En Eclipse debe seguir los siguientes pasos:
 
 En este punto, ya deberíamos poder ver las clases mencionadas en nuestro espacio de trabajo y, si las abrimos, podremos ver su código, que se utilizará en la siguiente tarea.
 
+> [!TIP]
+> Es normal que en la clase ``PruebaMonitor.java`` aparezca un error en la creación del objeto de tipo `InstrumentoClinico`. Este error desaparecerá una vez se complete la primera sección de la práctica. También se puede comentar la línea para que el error desaparezca.
+
 ### Implementación de la clase `InstrumentoClinico`
 
 La clase `InstrumentoClinico` es una extensión de la clase `DispositivoMedico`. Además de heredar esa clase, incorpora los siguientes atributos:
